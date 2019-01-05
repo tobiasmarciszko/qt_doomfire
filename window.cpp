@@ -49,11 +49,9 @@
 ****************************************************************************/
 
 #include "glwidget.h"
-#include "widget.h"
 #include "window.h"
 
 #include <QGridLayout>
-#include <QLabel>
 #include <QTimer>
 
 Window::Window()
@@ -67,5 +65,5 @@ Window::Window()
 
     QTimer *timer = new QTimer(this);
     connect(timer, &QTimer::timeout, openGL, &GLWidget::animate);
-    timer->start(33);
+    timer->start(16); // 60 FPS
 }

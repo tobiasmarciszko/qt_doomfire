@@ -56,26 +56,23 @@
 #include <QPen>
 #include <QWidget>
 #include <QImage>
+#include "effect.h"
 
-//! [0]
-class Helper
+class Helper : public QObject
 {
-public:
-    Helper();
+    Q_OBJECT
 
 public:
-    void paint(QPainter *painter, QPaintEvent *event, int elapsed);
+    explicit Helper(QObject *parent = nullptr);
+
+public:
+    void paint(QPainter *painter);
+
+private slots:
+    void tick();
 
 private:
-    void drawPixel(QRgb pixel, int x, int y);
-
-    QBrush background;
-    QBrush circleBrush;
-    QFont textFont;
-    QPen circlePen;
-    QPen textPen;
-    QImage framebuffer;
+    IEffect *effect;
 };
-//! [0]
 
 #endif
